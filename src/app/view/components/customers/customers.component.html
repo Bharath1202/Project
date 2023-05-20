@@ -1,0 +1,47 @@
+<section id="ngx-datatable-kitchen-sink">
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="row groupBtns">
+                <div class="col-md-3"></div>
+                <div class="col-md-9 d-flex justify-content-md-end">
+                    <div>
+                        <label class="d-flex align-items-center">Search
+                            <input type="text" placeholder="Search"
+                            class="forms-control ml-25" (keyup)="filterUpdate($event)" />
+                         </label>
+                    </div>
+                    <div class="addAccount">
+                        <button class="btn btn-primary"
+                            [routerLink]="['/customers/client/crud']" routerLinkActive="router-link-active"
+                            rippleEffect>
+                            <i data-feather="plus" class="mr-0 mr-sm-1"></i><span class="d-none d-sm-inline-block">Add
+                                Account</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button csvLink class="btn btn-outline-secondary " (click)="exportCsv()"
+                        rippleEffect>Export CSV</button>
+                    </div>
+                </div>
+
+            </div>
+            <ngx-datatable [rows]="customerTable" [rowHeight]="'auto'" class="bootstrap ngx-datatable "
+                [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true"
+                [limit]="basicSelectedOption" [externalPaging]="true">
+                <ngx-datatable-column name="Name" prop="clientName">
+                    <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                        <a href="javascript:void(0)" [routerLink]="['/customers/client/view']"
+                            routerLinkActive="router-link-active" [queryParams]="{id:row._id}">data</a>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Name" prop="clientName">
+                    <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                        <a href="javascript:void(0)" [routerLink]="['/customers/client/view']"
+                            routerLinkActive="router-link-active" [queryParams]="{id:row._id}">data</a>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,49 @@
+<div class="register">
+  <div class="content">
+    <div class="registerBox">
+      <form autocomplete="off" #RegisterForm="ngForm" (ngSubmit)="(RegisterForm.form.valid) && saveUser()">
+        <h2>Sign Up</h2>
+        <div class="registerInputBox">
+          <input type="text" required minlength="2" maxlength="50" [(ngModel)]="register.userName" name="userName"
+            #UserName="ngModel" [class.error]="RegisterForm.submitted && UserName.invalid" />
+          <span>UserName</span>
+          <i></i>
+        </div>
+        <span class="m-1" *ngIf="RegisterForm.submitted && UserName.invalid">
+          <small class="form-text" *ngIf="UserName.errors">
+            Enter your user name</small>
+        </span>
+        <div class="registerInputBox">
+          <input type="text" appNumberValidation minlength="10" maxlength="10" [(ngModel)]="register.mobile"
+            name="mobile" #Mobile="ngModel" [class.error]="RegisterForm.submitted && Mobile.invalid" required />
+          <span>Mobile</span>
+          <i></i>
+        </div>
+        <span class="m-1" *ngIf="RegisterForm.submitted && Mobile.invalid">
+          <small class="form-text" *ngIf="Mobile.errors">
+            Enter your mobile number</small>
+        </span>
+        <div class="registerInputBox">
+          <input type="text" required minlength="2" maxlength="50" [(ngModel)]="register.email" name="email"
+            #Email="ngModel" email [class.error]="RegisterForm.submitted && Email.invalid" />
+          <span>Email</span>
+          <i></i>
+        </div>
+        <span class="m-1" *ngIf="RegisterForm.submitted && Email.invalid">
+          <small class="form-text" *ngIf="Email.errors.email">
+            Enter your valid email</small>
+        </span>
+        <div class="registerInputBox">
+          <input type="password" required minlength="2" maxlength="15" [(ngModel)]="register.password"
+            name="password" />
+          <span>Password</span>
+          <i></i>
+        </div>
+        <div class="registerLinks">
+          <a [routerLink]="['/auth/login']">Sign in</a>
+        </div>
+        <button type="submit" class="registerButton">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

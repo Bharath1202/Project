@@ -1,0 +1,150 @@
+/* You can add global styles to this file, and also import other style files */
+// If you want to override variables do it here
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import styles with default layout.
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+// perfect scrollbar theming for use with [perfectScrollbar] directive
+//@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+@import "layout";
+
+// Some temp fixes
+@import "fixes";
+
+// Prism.js
+@import "examples";
+
+// If you want to add something do it here
+@import "custom";
+
+.datatable-header {
+    padding: 0;
+    background-color: #f3f2f7 !important;
+}
+.datatable-header-cell{
+    padding: 0.55rem 1rem;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+@import '../scss/color.scss';
+
+* {
+  padding: 0%;
+  margin: 0%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+.modal-content{
+  width: 75%;
+}
+.forms-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-right: 1rem;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.forms-control:focus {
+//   color: #212529 !important;
+  background-color: #fff !important;
+  outline: 0 !important;
+  box-shadow: 0 !important;
+}
+
+button:focus {
+  background: transparent;
+}
+
+.form-text {
+  color: #45f3ff;
+}
+
+label {
+  font-weight: 400 !important;
+  font-size: 16px;
+  margin-bottom: 0.54rem;
+}
+
+.mt-1 {
+  margin-top: 3rem;
+}
+
+.form-group {
+  width: 22rem;
+  margin-bottom: 1rem;
+}
+
+.dropdown-toggle.hide-arrow,
+.dropdown-toggle-hide-arrow>.dropdown-toggle {
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.required {
+  color: #ff0000;
+}
+
+form {
+  span.error {
+    width: 100%;
+    font-size: 0.857rem;
+  }
+
+  .error:not(input) {
+    color: $Red;
+  }
+
+  input.error,
+  input.error:focus {
+    border-color: $Red !important;
+  }
+
+  textarea.error {
+    border-color: $Red !important;
+  }
+
+  .select2.error {
+
+    +.select2-container--classic .select2-selection--single,
+    +.select2-container--default .select2-selection--single,
+    +.select2-container--classic .select2-selection--multiple,
+    +.select2-container--default .select2-selection--multiple {
+      border-color: $Red !important;
+    }
+  }
+}

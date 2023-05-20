@@ -1,0 +1,45 @@
+<section *ngIf="showMobileForm !=true">
+  <div class="otpVerifcation">
+    <div class="otpVerifcationContent">
+      <div class="otp">
+        <form  autocomplete="off">
+          <h2 class="otpTitle">Enter OTP Code</h2>
+          <div class="input-field">
+            <input type="text" [(ngModel)]="id1" name="id1" minlength="1" maxlength="1"/>
+            <input type="text" [(ngModel)]="id2" name="id2"  minlength="1" maxlength="1"/>
+            <input type="text" [(ngModel)]="id3" name="id3"  minlength="1" maxlength="1"/>
+            <input type="text" [(ngModel)]="id4" name="id4"  minlength="1" maxlength="1"/>
+          </div>
+          <button type="submit" (click)="verifyOTP()">Verify OTP</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="showMobileForm">
+  <div class="mobile">
+    <div class="content">
+      <div class="mobileForm box">
+        <form autocomplete="off" #forgotForm="ngForm" (ngSubmit)="forgotForm.form.valid && sendToEmail()">
+          <h2>Forgot Password</h2>
+          <div class="mobileInputBox">
+            <input type="text" minlength="2" maxlength="30" [(ngModel)]="userEmail.emailId" name="emailId"
+              #email="ngModel" email required [class.error]="forgotForm.submitted && email.invalid" />
+            <span>Enter your Email</span>
+            <i></i>
+          </div>
+          <span class="m-1" *ngIf="forgotForm.submitted && email.invalid">
+            <small class="form-text" *ngIf="email.errors.required">
+              This email is required</small>
+            <small class="form-text" *ngIf="email.errors.email">
+              Enter your email Id</small>
+          </span>
+          <div class="toMobile">
+            <button type="submit" class="mobileButton">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

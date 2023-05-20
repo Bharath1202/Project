@@ -1,0 +1,3 @@
+export const Country = ['Australia', 'Belgium', 'Brazil', 'Canada', 'China', 'Egypt', 'France', 'Germany', 'India', 'Italy', 'Japan', 'Mexico', 'Netherlands', 'Saudi Arabia', 'Singapore', 'Spain', 'Sweeden', 'Turkey', 'United Arab Emirates', 'United Kingdom', 'Unites States']
+export const State = ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya',
+    'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal']

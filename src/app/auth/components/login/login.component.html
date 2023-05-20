@@ -1,0 +1,34 @@
+<div class="login">
+  <div class="content">
+    <div class="loginBox">
+      <form autocomplete="off" class="loginform" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && submit()">
+        <h2>Sign in</h2>
+        <div class="loginInputBox">
+          <input type="text" required="required" minlength="2" maxlength="50" [(ngModel)]="login.email" name="email"
+            #email="ngModel" [class.error]="loginForm.submitted && email.invalid" />
+          <span>Email</span>
+          <i></i>
+        </div>
+        <span class="m-1" *ngIf="loginForm.submitted && email.invalid">
+          <small class="form-text" *ngIf="email.errors">
+            Enter your Email</small>
+        </span>
+        <div class="loginInputBox">
+          <input type="password" required="required" minlength="2" maxlength="15" [(ngModel)]="login.password"
+            name="password" #password="ngModel" [class.error]="loginForm.submitted && password.invalid" />
+          <span>Password</span>
+          <i></i>
+        </div>
+        <span class="m-1" *ngIf="loginForm.submitted && password.invalid">
+          <small class="form-text" *ngIf="password.errors">
+            Enter your Password</small>
+        </span>
+        <div class="links">
+          <a [routerLink]="['/auth/forgot']">Forgot Password ?</a>
+          <a [routerLink]="['/auth/register']">Signup</a>
+        </div>
+        <button type="submit" class="loginButton">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
