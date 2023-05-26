@@ -4,17 +4,23 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ViewRoutingModule } from './view-routing.module';
 import { CustomersComponent } from './components/customers/customers.component';
 import { FormsModule } from '@angular/forms';
+import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
   declarations: [
-    CustomersComponent
+    CustomersComponent,
+    CustomerCreateComponent
   ],
   imports: [
     CommonModule,
     ViewRoutingModule,
     FormsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    NgbModule,
+    NgSelectModule,
   ]
 })
 export class ViewModule { }

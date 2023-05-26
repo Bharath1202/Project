@@ -32,7 +32,7 @@ $enable-rtl: true;
 .datatable-header-cell{
     padding: 0.55rem 1rem;
 }
-
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 /* You can add global styles to this file, and also import other style files */
 @import '../scss/color.scss';
@@ -81,10 +81,6 @@ body {
   background-color: #fff !important;
   outline: 0 !important;
   box-shadow: 0 !important;
-}
-
-button:focus {
-  background: transparent;
 }
 
 .form-text {

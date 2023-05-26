@@ -1,0 +1,102 @@
+<div id="account">
+    <div class="accountForm">
+        <div class="row col-12">
+            <div class="card">
+                <div class="card-body ">
+                    <form #accountForm="ngForm" (ngSubmit)="accountForm.form.valid && submitAccount()">
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="form-control-label">First Name</label>
+                                <input type="text" placeholder="Name" class="forms-control" />
+                            </div>
+                            <div class="col-4">
+                                <label class="form-control-label">Last Name</label>
+                                <input type="text" placeholder="Name" class="forms-control" />
+                            </div>
+                            <div class="col-4">
+                                <label class="form-control-label">Age</label>
+                                <input type="text" placeholder="Name" class="forms-control" />
+                            </div>
+                            <div class="col-4">
+                                <label class="form-control-label mt-3">Date Of Birth</label>
+                                <input placeholder="Name" class="forms-control" [minDate]="today" ngbDatepicker
+                                    #basicDP="ngbDatepicker" (click)="basicDP.toggle()" />
+                            </div>
+                            <div class="col-4">
+                                <label class="labelGender">Gender</label><br />
+                                <div class=" d-flex">
+                                    <label class="selectGender">
+                                        <input type="radio" name="gender" value="male" checked>
+                                        <span class="value">Male</span>
+                                    </label>
+                                    <label class="selectGender">
+                                        <input type="radio" name="gender" value="female">
+                                        <span class="value">Female</span>
+                                    </label>
+                                    <label class="selectGender">
+                                        <input type="radio" name="gender" value="other">
+                                        <span class="value">Other</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-3">
+                                <label class="form-control-label">Mobile Number</label>
+                                <input type="text" placeholder="Mobile Number" class="forms-control" />
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-3">
+                                <label class="form-control-label">Alternate Mobile Number</label>
+                                <input type="text" placeholder="Alternate Mobile Number" class="forms-control" />
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mt-3">
+                                <label class="form-control-label">Martial Status</label>
+                                <ng-select [items]="martialStatus" placeholder="Martial Status"></ng-select>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-3">
+                                <label class="form-control-label">Nationality</label>
+                                <input type="text" placeholder="Nationality" class="forms-control" />
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-3">
+                                <label class="form-control-label">Religion</label>
+                                <input type="text" placeholder="Religion" class="forms-control" />
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-3">
+                                <label class="form-control-label">Email</label>
+                                <input type="text" placeholder="Email" class="forms-control" />
+                            </div>
+                            <div class="col-12 mt-3">
+                                <label class="form-control-label">Address</label>
+                                <textarea minlength="2" maxlength="500" rows="3" placeholder="Address"
+                                    class="forms-control"></textarea>
+                            </div>
+                            <div class="col-lg-3 col-md-4 mt-3">
+                                <label class="form-control-label">Captcha</label>
+                                <div class="d-flex">
+                                    <div class="captcha">
+                                        <span id="preview"></span>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="refreshButton" (click)="captcha()"><i
+                                                class="fa fa-rotate-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-3">
+                                <label class="form-control-label"></label>
+                                <input type="text" minlength="6" maxlength="6" placeholder="Enter Captcha"
+                                    [(ngModel)]="account.captcha" name="account.captcha" #Captcha="ngModel" [class.error]="accountForm.submitted && Captcha.invalid"
+                                    class="forms-control enterCapcha" (ngModelChange)="text()" required/>
+                                    <span *ngIf="accountForm.submitted && Captcha.invalid"  class="invalid-form">
+                                        <small class="form-text text-success"*ngIf="Captcha.errors.required" >valid</small>
+                                    </span>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

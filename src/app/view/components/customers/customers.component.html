@@ -4,15 +4,13 @@
             <div class="row groupBtns">
                 <div class="col-md-3"></div>
                 <div class="col-md-9 d-flex justify-content-md-end">
-                    <div>
-                        <label class="d-flex align-items-center">Search
+                    <div class="searchBox">
                             <input type="text" placeholder="Search"
-                            class="forms-control ml-25" (keyup)="filterUpdate($event)" />
-                         </label>
+                            class="forms-control ml-25 " (keyup)="filterUpdate($event)" />
                     </div>
                     <div class="addAccount">
                         <button class="btn btn-primary"
-                            [routerLink]="['/customers/client/crud']" routerLinkActive="router-link-active"
+                            [routerLink]="['/home/view/createCustomer']" routerLinkActive="router-link-active"
                             rippleEffect>
                             <i data-feather="plus" class="mr-0 mr-sm-1"></i><span class="d-none d-sm-inline-block">Add
                                 Account</span>

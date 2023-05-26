@@ -1,0 +1,73 @@
+.selectGender {
+    // display: flex;
+    padding: 0px 0;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  input[type="radio"] {
+    opacity: 0;
+  }
+
+  .value {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px 5px 40px;
+    border-radius: 20px;
+  }
+
+  .value:hover {
+    background: rgba(169, 10, 156, 0.1);
+  }
+
+  .value::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #dadada;
+    outline: 0px solid #a90a9c;
+    transition: 0.4s;
+  }
+
+  input[type="radio"]:checked~.value {
+    color: #a90a9c;
+    border-width: 5px;
+    background: rgba(169, 10, 156, 0.2);
+    transition: 0.4s;
+  }
+
+  input[type="radio"]:checked~.value::before {
+    outline-width: 5px;
+    background: #fff;
+  }
+  .labelGender{
+    margin: 1rem 0 0 0;
+  }
+  .captcha{
+    text-align: center;
+    border-radius: 4%;
+    padding: 0.5rem;
+    background: #efefef;
+    margin: 0 1rem 0 0;
+    min-width: 11rem;
+    max-width: 11rem;
+  }
+  .refreshButton{
+    border: none;
+    outline: none;
+    background: lightblue;
+    padding: 0.5rem;
+  }
+  .enterCapcha{
+    margin: 0.5rem 0 0 0;
+  }
+  .color{
+    background-color: #a90a9c;
+  }
+  .req{
+    background-color: aqua;
+  }
