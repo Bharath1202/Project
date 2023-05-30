@@ -15,6 +15,10 @@ export const navItems: INavData[] = [
         name: 'Customer',
         url: '/home/view/customers'
       },
+      {
+        name: 'Game',
+        url: '/home/view/game'
+      },
     ]
   },
 ];
