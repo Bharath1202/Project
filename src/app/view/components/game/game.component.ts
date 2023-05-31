@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
   public name = 0;
   public timeInSecs: any = 1 * 20;
   public ticker;
+  public periodTable = []
   public numberList = [0,1,2,3,4,5,6,7,8,9]
   constructor(private gameService:GameService) {
   }
@@ -22,14 +23,17 @@ export class GameComponent implements OnInit {
     let data = interval(1000);
     data.subscribe(r => {
       this.name += 1;
-    this.getGameData();
-
       this.tick();
+    })
+    let s = interval(120000)
+    s.subscribe(res=>{
+      this.getGameData()
     })
   }
   getGameData(){
     this.gameService.gameData().subscribe(res=>{
       console.log(res);
+      this.periodTable = res?.res;
     },(error)=>{
       console.log(error);
     })
@@ -51,8 +55,8 @@ export class GameComponent implements OnInit {
     secs %= 3600;
     var mins = Math.floor(secs / 60);
     secs %= 60;
-    var pretty = ((hours < 10) ? "0" : "") + hours + ":" + ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
-    document.getElementById("countdown").innerHTML = pretty;
+    var time = ((hours < 10) ? "0" : "") + hours + ":" + ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
+    document.getElementById("countdown").innerHTML = time;
   }
 
 }
