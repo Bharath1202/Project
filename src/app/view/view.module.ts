@@ -7,14 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { GameComponent } from './components/game/game.component';
 import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
     CustomersComponent,
     CustomerCreateComponent,
-    GameComponent
   ],
   imports: [
     CommonModule,
