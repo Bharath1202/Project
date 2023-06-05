@@ -1,4 +1,22 @@
 export class Account{
-    citizenShip?:string;
-    captcha?:string
+  _id?:any;
+  bankName?:string;
+  accountNumber?:number;
+  ifscCode?:string;
+  firstName?:string;
+  lastName?:string;
+  gender?:string;
+  dateOfBirth?:string;
+  martialStatus?:string;
+  age?:number;
+  address?:string;
+  pinCode?:number;
+  mobileNumber?:number;
+  alternateNumber?:number;
+  nationality?:string;
+  religion?:string;
+  email?:string;
+  userImage?:string;
+  citizenShip?:string;
+  captcha?:string
 }

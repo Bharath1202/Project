@@ -8,11 +8,13 @@ import { CustomerCreateComponent } from './components/customer-create/customer-c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CountdownModule } from 'ngx-countdown';
+import { PendingAccountComponent } from './components/pending-account/pending-account.component';
 
 @NgModule({
   declarations: [
     CustomersComponent,
     CustomerCreateComponent,
+    PendingAccountComponent,
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { CountdownModule } from 'ngx-countdown';
     NgxDatatableModule,
     NgbModule,
     NgSelectModule,
-    CountdownModule
+    CountdownModule,
+    FormsModule
   ]
 })
 export class ViewModule { }

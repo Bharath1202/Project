@@ -1,0 +1,74 @@
+<section id="ngx-datatable-kitchen-sink">
+  <div class="card">
+    <div class="card-body p-0">
+      <div class="row pendinggroupBtns">
+        <div class="col-md-3"></div>
+        <div class="col-md-9 d-flex justify-content-md-end">
+          <div class="pendingSearchBox">
+            <input type="text" placeholder="Search" class="forms-control ml-25 " (keyup)="filterUpdate($event)" />
+          </div>
+          <div>
+            <button csvLink class="btn btn-outline-secondary " (click)="exportCsv()" rippleEffect>Export CSV</button>
+          </div>
+        </div>
+
+      </div>
+      <ngx-datatable [rows]="pendingAccount" [rowHeight]="'auto'" class="bootstrap ngx-datatable "
+        [columnMode]="ColumnMode.force" [selectionType]="SelectionType" [headerHeight]="40" [footerHeight]="50"
+        [scrollbarH]="true" [limit]="basicSelectedOption">
+        <ngx-datatable-column name="Name" prop="firstName">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            {{name | titlecase}} {{row.lastName}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Email" prop="email">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            {{name}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Mobile Number" prop="mobileNumber">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            {{name}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Action" prop="id" [sortable]="false">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            <div class="d-flex align-items-center">
+              <div ngbDropdown container="body">
+                <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-solid fa-gear"></i>
+                </a>
+                <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
+                  <a href="javascript:void(0)" [routerLink]="['/home/view/createCustomer']"
+                    [queryParams]="{id: row._id}" ngbDropdownItem class="d-flex align-items-center"><i
+                      data-feather="edit" class="mr-50"></i>Edit</a>
+                  <a href="javascript:void(0)" (click)="deleteModel(deleteForm,row._id)" ngbDropdownItem
+                    class="d-flex align-items-center"><i data-feather="trash-2" class="mr-50"></i>Delete</a>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Status" prop="status" [width]="200">
+          <ng-template let-row="row" let-status="value" let-name="value" ngx-datatable-cell-template>
+            <div ngbDropdown container="body" class="btn-group">
+              <button type="button" [class]=" name =='verified' ? 'btn btn-outline-success' : 'btn btn-outline-danger'"
+                rippleEffect>{{name | titlecase}}</button>
+              <button ngbDropdownToggle type="button"
+                [class]=" name =='verified' ? 'btn btn-outline-success dropdown-toggle-split' : 'btn btn-outline-danger dropdown-toggle-split'"
+                rippleEffect>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div ngbDropdownMenu>
+                <a ngbDropdownItem href="javascript:void(0)" (click)="updateStatus('pending', row)">Pending</a>
+                <a ngbDropdownItem href="javascript:void(0)" (click)="updateStatus('verified', row)">Verified</a>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column> -->
+      </ngx-datatable>
+    </div>
+  </div>
+
+</section>

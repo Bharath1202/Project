@@ -16,8 +16,8 @@ export const navItems: INavData[] = [
         url: '/home/view/customers'
       },
       {
-        name: 'Game',
-        url: '/home/view/game'
+        name: 'Pending Account',
+        url: '/home/view/pendingAccount'
       },
     ]
   },
