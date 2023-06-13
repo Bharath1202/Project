@@ -12,7 +12,7 @@ import { AccountService } from '../../service/account.service';
 })
 export class CustomerCreateComponent implements OnInit {
   public citizenType = true;
-  public account = new Account;
+  public account: Account = new Account();
   public dateOfBirth: NgbDateStruct;
   public today;
   public validCaptcha;
@@ -27,13 +27,12 @@ export class CustomerCreateComponent implements OnInit {
       this.id = r['id']
       if (this.id) {
         this.getSingleAccount();
-      } else {
-        this.captcha();
       }
     })
   }
 
   ngOnInit(): void {
+    this.captcha();
     let date = new Date;
     this.today = { day: date.getDate(), month: date.getMonth() + 1, year: date.getFullYear() }
   }
@@ -75,12 +74,17 @@ export class CustomerCreateComponent implements OnInit {
 
   }
   submitAccount() {
-    if (this.account._id) {
-      console.log(this.account);
-    }
     if (this.validCaptcha == this.account.captcha) {
-      this.toastr.success('Login Successfully', '', { progressBar: true });
+      this.accountService.saveCustomerAccount(this.account).subscribe((res: any) => {
+        this.toastr.success('Login Successfully', '', { progressBar: true });
+      })
+      // if (this.account._id) {
+      //   console.log(this.account);
+      // }
+    }else{
 
     }
+
+
   }
 }

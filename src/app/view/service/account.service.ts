@@ -18,4 +18,7 @@ export class AccountService {
     const param = new HttpParams().set('_id',id)
     return this.http.put(`${this.baseUrl}/getSingleAccount`,{param})
   }
+  saveCustomerAccount(data){
+    return this.http.post(`${this.baseUrl}/customerAccount`,data)
+  }
 }

@@ -8,14 +8,6 @@
                             <input type="text" placeholder="Search"
                             class="forms-control ml-25 " (keyup)="filterUpdate($event)" />
                     </div>
-                    <div class="addAccount">
-                        <button class="btn btn-primary"
-                            [routerLink]="['/home/view/createCustomer']" routerLinkActive="router-link-active"
-                            rippleEffect>
-                            <i data-feather="plus" class="mr-0 mr-sm-1"></i><span class="d-none d-sm-inline-block">Add
-                                Account</span>
-                        </button>
-                    </div>
                     <div>
                         <button csvLink class="btn btn-outline-secondary " (click)="exportCsv()"
                         rippleEffect>Export CSV</button>
