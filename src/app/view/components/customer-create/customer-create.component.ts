@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Account } from '../../model/account';
 import { ToastrService } from 'ngx-toastr';
@@ -15,9 +15,9 @@ export class CustomerCreateComponent implements OnInit {
   public account: Account = new Account();
   public dateOfBirth: NgbDateStruct;
   public today;
+  public state;
   public validCaptcha;
-  public nn;
-  public n: number = 0;
+  public statesLists = ['tamilNadu']
   public id;
   public genderList = ['Male', 'Female', 'Others']
   public martialStatus = ['Married', 'Singled', 'Divorced'];
@@ -84,7 +84,6 @@ export class CustomerCreateComponent implements OnInit {
     }else{
 
     }
-
-
   }
+
 }

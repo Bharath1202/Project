@@ -75,6 +75,10 @@
                 <label class="form-control-label">Email</label>
                 <input type="text" placeholder="Email" class="forms-control" [(ngModel)]="account.email" name="email" />
               </div>
+              <div class="col-lg-4 col-md-6 mt-3">
+                <label class="form-control-label">Pincode</label>
+                <input type="text" placeholder="Pincode" class="forms-control" [(ngModel)]="account.pincode" name="pinCode" />
+              </div>
               <div class="col-12 mt-3">
                 <label class="form-control-label">Address</label>
                 <textarea minlength="2" maxlength="500" rows="3" placeholder="Address" [(ngModel)]="account.address"
@@ -112,3 +116,4 @@
     </div>
   </div>
 </div>
+

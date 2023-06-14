@@ -10,7 +10,7 @@ export class Account{
   martialStatus?:string;
   age?:number;
   address?:string;
-  pinCode?:number;
+  pincode?:number;
   mobileNumber?:number;
   alternateNumber?:number;
   nationality?:string;
