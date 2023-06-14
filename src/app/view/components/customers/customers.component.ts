@@ -6,17 +6,12 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss']
 })
-export class CustomersComponent implements AfterContentInit {
+export class CustomersComponent   {
   public ColumnMode = ColumnMode;
   public SelectionType = SelectionType;
   public basicSelectedOption = 10;
-  @Input() state:any
   public customerTable;
   constructor(){}
-  ngAfterContentInit(): void {
-    // console.log('kkkkkkkk',this.state);
-
-  }
   exportCsv(){}
   filterUpdate(event){}
 }

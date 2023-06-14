@@ -15,9 +15,7 @@ export class CustomerCreateComponent implements OnInit {
   public account: Account = new Account();
   public dateOfBirth: NgbDateStruct;
   public today;
-  public state;
   public validCaptcha;
-  public statesLists = ['tamilNadu']
   public id;
   public genderList = ['Male', 'Female', 'Others']
   public martialStatus = ['Married', 'Singled', 'Divorced'];
