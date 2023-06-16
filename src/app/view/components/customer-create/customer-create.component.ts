@@ -2,7 +2,7 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Account } from '../../model/account';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../service/account.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class CustomerCreateComponent implements OnInit {
   public genderList = ['Male', 'Female', 'Others']
   public martialStatus = ['Married', 'Singled', 'Divorced'];
   public citizenShip = ['Indian', 'Others'];
-  constructor(private toastr: ToastrService, private activateRoute: ActivatedRoute, private accountService: AccountService) {
+  constructor(private route:Router,private toastr: ToastrService, private activateRoute: ActivatedRoute, private accountService: AccountService) {
     this.activateRoute.queryParams.subscribe(r => {
       this.id = r['id']
       if (this.id) {
@@ -75,12 +75,10 @@ export class CustomerCreateComponent implements OnInit {
     if (this.validCaptcha == this.account.captcha) {
       this.accountService.saveCustomerAccount(this.account).subscribe((res: any) => {
         this.toastr.success('Login Successfully', '', { progressBar: true });
+        this.route.navigateByUrl['/home/view/customers']
       })
-      // if (this.account._id) {
-      //   console.log(this.account);
-      // }
     }else{
-
+      this.toastr.warning('Please enter valid Captcha', '', { progressBar: true });
     }
   }
 

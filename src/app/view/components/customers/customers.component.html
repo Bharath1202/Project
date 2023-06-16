@@ -16,20 +16,31 @@
 
             </div>
             <ngx-datatable [rows]="customerTable" [rowHeight]="'auto'" class="bootstrap ngx-datatable "
-                [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true"
-                [limit]="basicSelectedOption" [externalPaging]="true">
-                <ngx-datatable-column name="Name" prop="clientName">
+            [columnMode]="ColumnMode.force" [selectionType]="SelectionType" [headerHeight]="40" [footerHeight]="50"
+            [scrollbarH]="true" [limit]="basicSelectedOption">
+                <ngx-datatable-column name="Name" prop="firstName">
                     <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                        <a href="javascript:void(0)" [routerLink]="['/customers/client/view']"
-                            routerLinkActive="router-link-active" [queryParams]="{id:row._id}">data</a>
+                       {{name | titlecase}} {{row?.lastName}}
                     </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Name" prop="clientName">
+                <ngx-datatable-column name="Email" prop="email">
                     <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                        <a href="javascript:void(0)" [routerLink]="['/customers/client/view']"
-                            routerLinkActive="router-link-active" [queryParams]="{id:row._id}">data</a>
+                        {{name}}
                     </ng-template>
                 </ngx-datatable-column>
+                <ngx-datatable-column name="Mobile" prop="mobileNumber">
+                  <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                      {{name}}
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Status" prop="status">
+                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                  <a href="https://d2whfrs3i8q25j.cloudfront.net/SampleVideo_1280x720_1mb.mp4">data</a>
+                  <!-- <div [class]="name == 'In-progress'?'badge badge-pill badge-light-success':'badge badge-pill badge-light-danger'"> -->
+
+                  <!-- </div> -->
+                </ng-template>
+            </ngx-datatable-column>
             </ngx-datatable>
         </div>
     </div>

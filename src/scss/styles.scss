@@ -162,3 +162,6 @@ form :disabled {
   border-radius: 0.25rem;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+.ngx-datatable .datatable-body .datatable-body-row>div{
+  margin: 1rem 0 0 0.5rem;
+}
