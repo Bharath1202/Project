@@ -20,8 +20,19 @@ export class CustomersComponent implements OnInit {
   filterUpdate(event){}
   getCustomerAccount(){
     this.customerService.getAllCustomerAcc().subscribe((res:any)=>{
-      console.log(res);
       this.customerTable = res?.result
+    },(error)=>{
+      console.log(error);
+    })
+  }
+  updateStatus(data,row){
+    console.log(row);
+    let details = {
+      _id:row?._id,
+      status:data
+    }
+    this.customerService.updateStatus(details).subscribe((res:any)=>{
+      this.getCustomerAccount();
     },(error)=>{
       console.log(error);
     })

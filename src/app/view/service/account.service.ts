@@ -11,9 +11,6 @@ export class AccountService {
   getAccount(){
     return this.http.get(`${this.baseUrl}/getAccount`)
   }
-  updateStatus(data){
-    return this.http.post(`${this.baseUrl}/changeStatus`,data)
-  }
   getSingleAccount(id){
     const param = new HttpParams().set('_id',id)
     return this.http.put(`${this.baseUrl}/getSingleAccount`,{param})

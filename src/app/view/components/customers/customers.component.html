@@ -1,48 +1,57 @@
 <section id="ngx-datatable-kitchen-sink">
-    <div class="card">
-        <div class="card-body p-0">
-            <div class="row groupBtns">
-                <div class="col-md-3"></div>
-                <div class="col-md-9 d-flex justify-content-md-end">
-                    <div class="searchBox">
-                            <input type="text" placeholder="Search"
-                            class="forms-control ml-25 " (keyup)="filterUpdate($event)" />
-                    </div>
-                    <div>
-                        <button csvLink class="btn btn-outline-secondary " (click)="exportCsv()"
-                        rippleEffect>Export CSV</button>
-                    </div>
-                </div>
-
-            </div>
-            <ngx-datatable [rows]="customerTable" [rowHeight]="'auto'" class="bootstrap ngx-datatable "
-            [columnMode]="ColumnMode.force" [selectionType]="SelectionType" [headerHeight]="40" [footerHeight]="50"
-            [scrollbarH]="true" [limit]="basicSelectedOption">
-                <ngx-datatable-column name="Name" prop="firstName">
-                    <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                       {{name | titlecase}} {{row?.lastName}}
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="Email" prop="email">
-                    <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                        {{name}}
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column name="Mobile" prop="mobileNumber">
-                  <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                      {{name}}
-                  </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="Status" prop="status">
-                <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                  <a href="https://d2whfrs3i8q25j.cloudfront.net/SampleVideo_1280x720_1mb.mp4">data</a>
-                  <!-- <div [class]="name == 'In-progress'?'badge badge-pill badge-light-success':'badge badge-pill badge-light-danger'"> -->
-
-                  <!-- </div> -->
-                </ng-template>
-            </ngx-datatable-column>
-            </ngx-datatable>
+  <div class="card">
+    <div class="card-body p-0">
+      <div class="row groupBtns">
+        <div class="col-md-3"></div>
+        <div class="col-md-9 d-flex justify-content-md-end">
+          <div class="searchBox">
+            <input type="text" placeholder="Search" class="forms-control ml-25 " (keyup)="filterUpdate($event)" />
+          </div>
+          <div class="addcCustomer">
+            <button class="btn btn-primary" [routerLink]="['/home/view/createCustomer']" rippleEffect>Customer</button>
+          </div>
+          <div>
+            <button csvLink class="btn btn-outline-secondary " (click)="exportCsv()" rippleEffect>Export CSV</button>
+          </div>
         </div>
+
+      </div>
+      <ngx-datatable [rows]="customerTable" [rowHeight]="'auto'" class="bootstrap ngx-datatable "
+        [columnMode]="ColumnMode.force" [selectionType]="SelectionType" [headerHeight]="40" [footerHeight]="50"
+        [scrollbarH]="true" [limit]="basicSelectedOption">
+        <ngx-datatable-column name="Name" prop="firstName">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            {{name | titlecase}} {{row?.lastName}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Email" prop="email">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            {{name}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Mobile" prop="mobileNumber">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            {{name}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Status" prop="status">
+          <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+            <div ngbDropdown container="body" class="btn-group">
+              <button type="button" [class]=" name =='verified' ? 'btn btn-outline-success' : 'btn btn-outline-danger'"
+                rippleEffect>{{name | titlecase}}</button>
+              <button ngbDropdownToggle type="button" *ngIf="name == In-progress"
+                [class]=" name =='verified' ? 'btn btn-outline-success dropdown-toggle-split' : 'btn btn-outline-danger dropdown-toggle-split'"
+                rippleEffect>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div ngbDropdownMenu>
+                <a ngbDropdownItem href="javascript:void(0)" (click)="updateStatus('verified', row)">Verified</a>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
     </div>
+  </div>
 
 </section>

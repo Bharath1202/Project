@@ -33,18 +33,18 @@ export class CustomerCreateComponent implements OnInit {
     this.captcha();
     let date = new Date;
     this.today = { day: date.getDate(), month: date.getMonth() + 1, year: date.getFullYear() }
+    this.account.bankName = 'Axis Bank';
+    let bankdata = this.account.bankName.slice(0, 3).toUpperCase();
+    let bankIfsc = Math.random().toString(9).substring(2, 9)
+    this.account.ifscCode = bankdata + bankIfsc;
+    let accNo = Math.random().toString(9).substring(2, 17)
+    this.account.accountNumber = Number(accNo)
   }
   getSingleAccount() {
     this.accountService.getSingleAccount(this.id).subscribe((res: any) => {
       this.account = res?.result[0]
       let date = new Date(this.account.dateOfBirth)
       this.dateOfBirth = { day: date.getDate(), month: date.getMonth(), year: date.getFullYear() }
-      this.account.bankName = 'Axis Bank';
-      let bankdata = this.account.bankName.slice(0, 3).toUpperCase();
-      let bankIfsc = Math.random().toString(9).substring(2, 9)
-      this.account.ifscCode = bankdata + bankIfsc;
-      let accNo = Math.random().toString(9).substring(2, 17)
-      this.account.accountNumber = Number(accNo)
     }, (error) => {
       console.log(error);
     })

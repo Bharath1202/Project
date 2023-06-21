@@ -32,17 +32,5 @@ export class PendingAccountComponent implements OnInit {
       console.log(error);
     })
   }
-  updateStatus(data,row){
-    console.log(row);
-    let details = {
-      _id:row?._id,
-      status:data
-    }
-    this.accountService.updateStatus(details).subscribe((res:any)=>{
-      console.log(res);
-      this.getAccount();
-    },(error)=>{
-      console.log(error);
-    })
-  }
+
 }
