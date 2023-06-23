@@ -22,3 +22,17 @@ export const navItems: INavData[] = [
     ]
   },
 ];
+export const navItems2: INavData[] = [
+  {
+    name: 'Dashboard',
+    url: '/home/dashboard',
+    iconComponent: { name: 'cil-speedometer' },
+  },
+  {
+    name: 'Profile',
+    url: '/home/customer/profile',
+    iconComponent: { name: 'cil-user' },
+
+  }
+
+]

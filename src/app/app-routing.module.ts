@@ -31,8 +31,12 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
       },
+      {
+        path:'customer',loadChildren:()=> import('./customer/customer.module').then(m=>m.CustomerModule)
+      }
     ]
   },
+
   // {
   //   path: '404',
   //   component: Page404Component,

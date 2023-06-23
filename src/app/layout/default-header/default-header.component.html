@@ -64,10 +64,10 @@
       </c-avatar>
     </button>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
-      <li>
+      <!-- <li>
         <h6 cDropdownHeader class="bg-light fw-semibold py-2">Account</h6>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a routerLink="./" cDropdownItem>
           <svg cIcon class="me-2" name="cilBell"></svg>
           Updates
@@ -75,8 +75,8 @@
             42
           </c-badge>
         </a>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a routerLink="./" cDropdownItem>
           <svg cIcon class="me-2" name="cilEnvelopeOpen"></svg>
           Messages
@@ -84,8 +84,8 @@
             42
           </c-badge>
         </a>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a routerLink="./" cDropdownItem>
           <svg cIcon class="me-2" name="cilTask"></svg>
           Tasks
@@ -93,8 +93,8 @@
             42
           </c-badge>
         </a>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a routerLink="./" cDropdownItem>
           <svg cIcon class="me-2" name='cilCommentSquare'></svg>
           Comments
@@ -102,13 +102,13 @@
             42
           </c-badge>
         </a>
-      </li>
+      </li> -->
       <li>
         <h6 cDropdownHeader class="bg-light fw-semibold py-2">Settings</h6>
       </li>
       <li></li>
       <li>
-        <a routerLink="./" cDropdownItem>
+        <a [routerLink]="['/customer/profile']" cDropdownItem>
           <svg cIcon class="me-2" name="cilUser"></svg>
           Profile
         </a>
@@ -122,13 +122,10 @@
       <li>
         <a routerLink="./" cDropdownItem>
           <svg cIcon class="me-2" name="cilCreditCard"></svg>
-          Payments
-          <c-badge class="ms-2 float-end" color="secondary">
-            42
-          </c-badge>
+          Payment
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a routerLink="./" cDropdownItem>
           <svg cIcon class="me-2" name="cilFile"></svg>
           Projects
@@ -136,7 +133,7 @@
             42
           </c-badge>
         </a>
-      </li>
+      </li> -->
       <li>
         <hr cDropdownDivider/>
       </li>

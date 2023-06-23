@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService,private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.loginType = localStorage.getItem('loginType')
   }
   submit() {
     this.login.imageUrl = environment.imageUrl;
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/home/dashboard')
       } else if (res?.result?.loginType === 'user') {
         this.toastr.success('Login Successfully', '', {progressBar: true});
-        // this.router.navigateByUrl('/home/mobiles');
+        this.router.navigateByUrl('/home/customer');
       }
       else {
         this.toastr.warning('User Is not Registered', '', {progressBar: true});
