@@ -39,7 +39,7 @@
             <div ngbDropdown container="body" class="btn-group">
               <button type="button" [class]=" name =='verified' ? 'btn btn-outline-success' : 'btn btn-outline-danger'"
                 rippleEffect>{{name | titlecase}}</button>
-              <button ngbDropdownToggle type="button" *ngIf="name == In-progress"
+              <button ngbDropdownToggle type="button" *ngIf="name != In-progress"
                 [class]=" name =='verified' ? 'btn btn-outline-success dropdown-toggle-split' : 'btn btn-outline-danger dropdown-toggle-split'"
                 rippleEffect>
                 <span class="sr-only">Toggle Dropdown</span>

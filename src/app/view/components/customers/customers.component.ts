@@ -1,6 +1,7 @@
 import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 import { CustomerService } from '../../service/customer.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-customers',
@@ -12,7 +13,7 @@ export class CustomersComponent implements OnInit {
   public SelectionType = SelectionType;
   public basicSelectedOption = 10;
   public customerTable;
-  constructor(private customerService:CustomerService){}
+  constructor(private customerService:CustomerService,private toastr:ToastrService){}
   ngOnInit(): void {
     this.getCustomerAccount();
   }
@@ -32,6 +33,11 @@ export class CustomersComponent implements OnInit {
       status:data
     }
     this.customerService.updateStatus(details).subscribe((res:any)=>{
+      console.log('rrr',res);
+
+      this.toastr.success(res?.result,'',{
+        progressBar:true
+      })
       this.getCustomerAccount();
     },(error)=>{
       console.log(error);
