@@ -45,17 +45,17 @@
             [scrollbarH]="true" [limit]="basicSelectedOption">
             <ngx-datatable-column name="Bank Name" prop="firstName">
               <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                <!-- {{name | titlecase}} {{row?.lastName}} -->
+                {{name | titlecase}} 
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Branch" prop="email">
               <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                <!-- {{name}} -->
+                {{name | titlecase}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Location" prop="mobileNumber">
               <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                <!-- {{name}} -->
+                {{name | titlecase}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Status" prop="status">

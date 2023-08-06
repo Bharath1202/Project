@@ -12,4 +12,7 @@ export class BankService {
   saveBank(data){
     return this.http.post(`${this.baseUrl}/registerBank`,data)
   }
+  getAllBank(){
+    return this.http.get(`${this.baseUrl}/getAllBank`)
+  }
 }
