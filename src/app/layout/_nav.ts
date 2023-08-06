@@ -21,6 +21,10 @@ export const navItems: INavData[] = [
       },
     ]
   },
+  {
+    name: 'Bank',
+    url: '/home/view/bank',
+  }
 ];
 export const navItems2: INavData[] = [
   {

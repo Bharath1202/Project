@@ -9,12 +9,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CountdownModule } from 'ngx-countdown';
 import { PendingAccountComponent } from './components/pending-account/pending-account.component';
+import { BankComponent } from './components/bank/bank.component';
 
 @NgModule({
   declarations: [
     CustomersComponent,
     CustomerCreateComponent,
     PendingAccountComponent,
+    BankComponent,
   ],
   imports: [
     CommonModule,

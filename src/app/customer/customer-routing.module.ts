@@ -4,7 +4,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
-    path:'',component:ProfileComponent
+    path:'profile',component:ProfileComponent
   }
 ];
 

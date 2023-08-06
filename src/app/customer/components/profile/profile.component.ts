@@ -14,9 +14,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userDetails = JSON.parse(localStorage.getItem('userDetail'));
     this.userId = this.userDetails.find(x=>x._id)
-    console.log(this.userId);
+    if(this.userId){
+      this.getCustomer();
+    }
 
-    this.getCustomer();
   }
   getCustomer(){
     this.customer.getSingleAccount(this.userId._id).subscribe((res:any)=>{

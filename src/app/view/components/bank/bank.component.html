@@ -1,0 +1,82 @@
+<div id="bankAccount">
+    <div class="bankAccountForm">
+      <div class="row col-12">
+        <div class="card">
+          <div class="card-body ">
+            <form #banAccountForm="ngForm" (ngSubmit)="banAccountForm.form.valid && saveBank()">
+              <div class="row">
+                <h5>Bank Details</h5>
+                <div class="col-4">
+                    <label class="form-control-label">Bank Name</label>
+                    <input type="text" class="forms-control" placeholder="Bank Name" minlength="2" maxlength="100"
+                      [(ngModel)]="bank.bankName" name="bankName" >
+                  </div>
+                  <div class="col-4">
+                    <label class="form-control-label">Branch</label>
+                    <input type="text" class="forms-control" placeholder="Branch" minlength="2" maxlength="100"
+                      [(ngModel)]="bank.branch" name="branch" >
+                  </div>
+                  <div class="col-4">
+                    <label class="form-control-label">Location</label>
+                    <input type="text" class="forms-control" placeholder="Location" minlength="2" maxlength="100"
+                      [(ngModel)]="bank.location" name="location" >
+                  </div>
+                  <div class="col-4">
+                    <label class="form-control-label">Pincode</label>
+                    <input type="text" class="forms-control" placeholder="Pincode" minlength="6" maxlength="6"
+                      [(ngModel)]="bank.pinCode" name="pinCode">
+                  </div>
+              </div>
+              <div class="submitBank mt-3">
+                <button type="submit" class="btn btn-primary saveBank">Save</button>
+                <button type="button" class="btn btn-secondary ">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="showBank mt-3">
+      <div class="row col-12">
+        <div class="card">
+          <div class="card-body">
+            <ngx-datatable [rows]="BankTable" [rowHeight]="'auto'" class="bootstrap ngx-datatable "
+            [columnMode]="ColumnMode.force" [selectionType]="SelectionType" [headerHeight]="40" [footerHeight]="50"
+            [scrollbarH]="true" [limit]="basicSelectedOption">
+            <ngx-datatable-column name="Bank Name" prop="firstName">
+              <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <!-- {{name | titlecase}} {{row?.lastName}} -->
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Branch" prop="email">
+              <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <!-- {{name}} -->
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Location" prop="mobileNumber">
+              <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <!-- {{name}} -->
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Status" prop="status">
+              <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <div ngbDropdown container="body" class="btn-group">
+                  <button type="button" [class]=" name =='verified' ? 'btn btn-outline-success' : 'btn btn-outline-danger'"
+                    rippleEffect>{{name | titlecase}}</button>
+                  <button ngbDropdownToggle type="button" *ngIf="name != In-progress"
+                    [class]=" name =='verified' ? 'btn btn-outline-success dropdown-toggle-split' : 'btn btn-outline-danger dropdown-toggle-split'"
+                    rippleEffect>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div ngbDropdownMenu>
+                    <a ngbDropdownItem href="javascript:void(0)" (click)="updateStatus('verified', row)">Verified</a>
+                  </div>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
