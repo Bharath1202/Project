@@ -43,35 +43,19 @@
             <ngx-datatable [rows]="BankTable" [rowHeight]="'auto'" class="bootstrap ngx-datatable "
             [columnMode]="ColumnMode.force" [selectionType]="SelectionType" [headerHeight]="40" [footerHeight]="50"
             [scrollbarH]="true" [limit]="basicSelectedOption">
-            <ngx-datatable-column name="Bank Name" prop="firstName">
+            <ngx-datatable-column name="Bank Name" prop="bankName">
               <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                 {{name | titlecase}} 
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Branch" prop="email">
+            <ngx-datatable-column name="Branch" prop="branch">
               <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                 {{name | titlecase}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Location" prop="mobileNumber">
+            <ngx-datatable-column name="Location" prop="location">
               <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                 {{name | titlecase}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Status" prop="status">
-              <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
-                <div ngbDropdown container="body" class="btn-group">
-                  <button type="button" [class]=" name =='verified' ? 'btn btn-outline-success' : 'btn btn-outline-danger'"
-                    rippleEffect>{{name | titlecase}}</button>
-                  <button ngbDropdownToggle type="button" *ngIf="name != In-progress"
-                    [class]=" name =='verified' ? 'btn btn-outline-success dropdown-toggle-split' : 'btn btn-outline-danger dropdown-toggle-split'"
-                    rippleEffect>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div ngbDropdownMenu>
-                    <a ngbDropdownItem href="javascript:void(0)" (click)="updateStatus('verified', row)">Verified</a>
-                  </div>
-                </div>
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

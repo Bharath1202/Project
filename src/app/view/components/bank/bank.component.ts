@@ -23,6 +23,8 @@ submitAccount(){
 }
 getAllBank(){
   this.bankService.getAllBank().subscribe((res:any)=>{
+    console.log(res);
+    
     this.BankTable = res?.result;
   },(error)=>{
     console.log(error);
@@ -30,7 +32,7 @@ getAllBank(){
 }
 saveBank(){
   this.bankService.saveBank(this.bank).subscribe((res:any)=>{
-    console.log(res)
+    this.getAllBank();
   },(error)=>{
     console.log(error)
   })
