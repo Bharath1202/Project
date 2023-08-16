@@ -1,0 +1,46 @@
+<div id="depositaccount">
+    <div class="depositaccountDetail">
+        <div class="row col-12">
+            <div class="card">
+                <div class="card-body" *ngIf="this.bankDetail">
+                    <h5>Account Detail</h5>
+                    <div class="row">
+                        <div class="image">
+                            <img [src]="this.bankDetail.userImage" alt="logo" />
+                        </div>
+                        <div class="col-4">
+                            <label class="form-control-label">Bank Name</label>
+                            <div>
+                                {{bankDetail.bankName | titlecase}}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-control-label">Bank Account Number</label>
+                            <div>
+                                {{bankDetail.accountNumber }}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-control-label">IFSC code</label>
+                            <div>
+                                {{bankDetail.ifscCode }}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-control-label">Name</label>
+                            <div>
+                                {{bankDetail.firstName}} {{bankDetail.lastName}}
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-control-label">Mobile</label>
+                            <div>
+                                {{bankDetail.mobileNumber }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

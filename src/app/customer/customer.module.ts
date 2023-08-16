@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CustomerRoutingModule } from './customer-routing.module';
-import { ProfileComponent } from './components/profile/profile.component';
+import { DepositComponent } from './components/deposit/deposit.component';
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    DepositComponent
   ],
   imports: [
     CommonModule,

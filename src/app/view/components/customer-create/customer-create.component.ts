@@ -1,9 +1,11 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Account } from '../../model/account';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../service/account.service';
+import { BankService } from '../../service/bank.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-customer-create',
@@ -20,7 +22,8 @@ export class CustomerCreateComponent implements OnInit {
   public genderList = ['Male', 'Female', 'Others']
   public martialStatus = ['Married', 'Singled', 'Divorced'];
   public citizenShip = ['Indian', 'Others'];
-  constructor(private route:Router,private toastr: ToastrService, private activateRoute: ActivatedRoute, private accountService: AccountService) {
+  public BankList = [];
+  constructor(private bankService: BankService, private route: Router, private toastr: ToastrService, private activateRoute: ActivatedRoute, private accountService: AccountService) {
     this.activateRoute.queryParams.subscribe(r => {
       this.id = r['id']
       if (this.id) {
@@ -30,15 +33,18 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllBank();
     this.captcha();
     let date = new Date;
     this.today = { day: date.getDate(), month: date.getMonth() + 1, year: date.getFullYear() }
-    this.account.bankName = 'Axis Bank';
-    let bankdata = this.account.bankName.slice(0, 3).toUpperCase();
-    let bankIfsc = Math.random().toString(9).substring(2, 9)
-    this.account.ifscCode = bankdata + bankIfsc;
-    let accNo = Math.random().toString(9).substring(2, 17)
-    this.account.accountNumber = Number(accNo)
+
+  }
+  getAllBank() {
+    this.bankService.getAllBank().subscribe((res: any) => {
+      this.BankList = res?.result;
+    }, (error) => {
+      console.log(error);
+    })
   }
   getSingleAccount() {
     this.accountService.getSingleAccount(this.id).subscribe((res: any) => {
@@ -50,6 +56,17 @@ export class CustomerCreateComponent implements OnInit {
     })
   }
   change() {
+    this.BankList.forEach(res => {
+      if (res._id == this.account.bankName) {
+        let bankName = res?.bankName;
+        let bankdata = bankName.slice(0, 3).toUpperCase();
+        let bankIfsc = Math.random().toString(9).substring(2, 9);
+        this.account.ifscCode = bankdata + bankIfsc;
+        let accNo = Math.random().toString(9).substring(2, 17);
+        this.account.accountNumber = Number(accNo);
+      }
+    })
+
   }
   changeCitizenType() {
     if (this.account.citizenShip == 'Others') {
@@ -72,14 +89,23 @@ export class CustomerCreateComponent implements OnInit {
 
   }
   submitAccount() {
-    if (this.validCaptcha == this.account.captcha) {
-      this.accountService.saveCustomerAccount(this.account).subscribe((res: any) => {
-        this.toastr.success('Login Successfully', '', { progressBar: true });
-        this.route.navigateByUrl['/home/view/customers']
-      })
-    }else{
-      this.toastr.warning('Please enter valid Captcha', '', { progressBar: true });
+    if (this.dateOfBirth) {
+      let date = new Date(this.dateOfBirth.year, this.dateOfBirth.month - 1, this.dateOfBirth.day);
+      this.account.dateOfBirth = date;
+      let age = Number(this.account.age)
+      this.account.age = age;
+      console.log(this.account);
+      this.account.userImage = environment.imageUrl;
+      if (this.validCaptcha == this.account.captcha) {
+        this.accountService.saveCustomerAccount(this.account).subscribe((res: any) => {
+          this.toastr.success('Save Successfully', '', { progressBar: true });
+          this.route.navigateByUrl['/home/view/customers']
+        })
+      } else {
+        this.toastr.warning('Please enter valid Captcha', '', { progressBar: true });
+      }
     }
+
   }
 
 }

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfileComponent } from './components/profile/profile.component';
+import { DepositComponent } from './components/deposit/deposit.component';
 
 const routes: Routes = [
   {
-    path:'profile',component:ProfileComponent
+    path: 'deposit', component: DepositComponent
   }
 ];
 

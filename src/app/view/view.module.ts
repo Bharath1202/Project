@@ -10,6 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { CountdownModule } from 'ngx-countdown';
 import { PendingAccountComponent } from './components/pending-account/pending-account.component';
 import { BankComponent } from './components/bank/bank.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BankComponent } from './components/bank/bank.component';
     NgbModule,
     NgSelectModule,
     CountdownModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class ViewModule { }

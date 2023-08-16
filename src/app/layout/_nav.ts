@@ -33,8 +33,8 @@ export const navItems2: INavData[] = [
     iconComponent: { name: 'cil-speedometer' },
   },
   {
-    name: 'Profile',
-    url: '/home/customer/profile',
+    name: 'Deposit',
+    url: '/home/customer/deposit',
     iconComponent: { name: 'cil-user' },
 
   }

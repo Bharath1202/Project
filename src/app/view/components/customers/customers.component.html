@@ -37,15 +37,15 @@
         <ngx-datatable-column name="Status" prop="status">
           <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
             <div ngbDropdown container="body" class="btn-group">
-              <button type="button" [class]=" name =='verified' ? 'btn btn-outline-success' : 'btn btn-outline-danger'"
+              <button type="button" [class]=" name =='verify' ? 'btn btn-outline-success' : 'btn btn-outline-danger'"
                 rippleEffect>{{name | titlecase}}</button>
-              <button ngbDropdownToggle type="button" *ngIf="name != In-progress"
-                [class]=" name =='verified' ? 'btn btn-outline-success dropdown-toggle-split' : 'btn btn-outline-danger dropdown-toggle-split'"
+              <button ngbDropdownToggle type="button" *ngIf="name != 'verify'"
+                [class]=" name =='verify' ? 'btn btn-outline-success dropdown-toggle-split' : 'btn btn-outline-danger dropdown-toggle-split'"
                 rippleEffect>
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div ngbDropdownMenu>
-                <a ngbDropdownItem href="javascript:void(0)" (click)="updateStatus('verified', row)">Verified</a>
+                <a ngbDropdownItem href="javascript:void(0)" (click)="updateStatus('verify', row)">Verified</a>
               </div>
             </div>
           </ng-template>

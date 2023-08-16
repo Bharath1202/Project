@@ -20,7 +20,7 @@ export class AuthService {
         let loginType = user?.result?.loginType
         localStorage.setItem('userDetail', JSON.stringify(userDetail));
         localStorage.setItem('loginType', loginType);
-        localStorage.setItem('token',user?.result?.token)
+        localStorage.setItem('token', user?.result?.token)
         localStorage.setItem('loggedIn', 'true');
       }
       return user;
