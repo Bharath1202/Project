@@ -5,7 +5,7 @@ export const environment = {
   production: true,
   apiUrl: "http://localhost:3070",
   imageUrl: "https://o.remove.bg/downloads/fe4511c0-3f6e-405c-aafb-085a867c46f9/user_1-removebg-preview.png",
-  firebaseConfig : {
+  firebaseConfig: {
     apiKey: "AIzaSyCXEuB-7Eaz8X-EzC736t2-COoUFmEJDTY",
     authDomain: "tech-spot-5ea33.firebaseapp.com",
     projectId: "tech-spot-5ea33",

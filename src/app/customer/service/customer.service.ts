@@ -12,4 +12,13 @@ export class CustomerService {
     let params = new HttpParams().set('id', id);
     return this.http.put(`${this.baseUrl}/getCustomerAccount`, { params });
   }
+  depositAmount(data) {
+    return this.http.post(`${this.baseUrl}/deposit`, data);
+  }
+  getAllDeposit() {
+    return this.http.get(`${this.baseUrl}/getAllDeposit`);
+  }
+  withdrawAmount(data) {
+    return this.http.post(`${this.baseUrl}/withdraw`, data);
+  }
 }

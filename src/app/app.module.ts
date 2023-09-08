@@ -18,10 +18,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Import containers
-import {DefaultSidebarComponent,} from './layout/default-sidebar/default-sidebar.component';
-import {DefaultHeaderComponent,} from './layout/default-header/default-header.component';
-import {DefaultFooterComponent,} from './layout/default-footer/default-footer.component';
+import { DefaultSidebarComponent, } from './layout/default-sidebar/default-sidebar.component';
+import { DefaultHeaderComponent, } from './layout/default-header/default-header.component';
+import { DefaultFooterComponent, } from './layout/default-footer/default-footer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import {
   AvatarModule,
@@ -45,6 +50,7 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { environment } from 'src/environments/environment';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -52,7 +58,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [AppComponent,DefaultSidebarComponent,DefaultHeaderComponent,DefaultFooterComponent],
+  declarations: [AppComponent, DefaultSidebarComponent, DefaultHeaderComponent, DefaultFooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -81,6 +87,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ListGroupModule,
     CardModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     ToastrModule.forRoot(),
   ],
   providers: [

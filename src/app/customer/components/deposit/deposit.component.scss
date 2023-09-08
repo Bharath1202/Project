@@ -1,0 +1,38 @@
+.bankDetails {
+    margin: 0 0 1rem 0;
+
+    .media {
+        display: flex;
+
+        .uploadImage {
+            border: none;
+            outline: none;
+            background: transparent;
+
+            .changeProfile {
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    .uploadImage {
+        margin: 0 1rem 0 0;
+    }
+}
+
+.depositCard {
+    margin: 1rem 0 0 0;
+    padding: 0 0 1rem 1rem;
+
+    .depositCard {
+        margin: 0 2rem 0 0;
+    }
+}
+
+.depositFrom {
+    padding: 1rem 0 0 0;
+
+    .depositTitle {
+        margin: 0 0 1rem 0rem;
+    }
+}

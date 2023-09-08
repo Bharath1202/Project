@@ -27,7 +27,6 @@ import { SharedModule } from '../shared/shared.module';
     NgbModule,
     NgSelectModule,
     CountdownModule,
-    FormsModule,
     SharedModule
   ]
 })
