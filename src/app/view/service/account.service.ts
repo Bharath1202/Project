@@ -7,15 +7,16 @@ import { environment } from 'src/environments/environment';
 })
 export class AccountService {
   private baseUrl = environment.apiUrl;
-  constructor(private http:HttpClient) { }
-  getAccount(){
+  constructor(private http: HttpClient) { }
+  getAccount() {
     return this.http.get(`${this.baseUrl}/getAccount`)
   }
-  getSingleAccount(id){
-    const param = new HttpParams().set('_id',id)
-    return this.http.put(`${this.baseUrl}/getSingleAccount`,{param})
+  getSingleAccount(id) {
+    const param = new HttpParams().set('_id', id)
+    return this.http.put(`${this.baseUrl}/getSingleAccount`, { param })
   }
-  saveCustomerAccount(data){
-    return this.http.post(`${this.baseUrl}/customerAccount`,data)
+  saveCustomerAccount(data) {
+    return this.http.post(`${this.baseUrl}/customerAccount`, data)
   }
+
 }

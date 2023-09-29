@@ -21,4 +21,7 @@ export class CustomerService {
   withdrawAmount(data) {
     return this.http.post(`${this.baseUrl}/withdraw`, data);
   }
+  uploadImage(data) {
+    return this.http.post(`${this.baseUrl}/uploadImage`, data);
+  }
 }

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { log } from 'console';
 import { Router } from '@angular/router';
 import { map, take, tap } from 'rxjs';
+import { AccountService } from 'src/app/view/service/account.service';
 
 @Component({
   selector: 'app-deposit',
@@ -18,19 +19,26 @@ export class DepositComponent implements OnInit {
   public bankId;
   public bankDetail;
   public bankName;
+  public userImage;
   public listDeposit = [];
   public avatarImg;
+  public uploadImage;
   public customer: Deposit = new Deposit();
   public withdraw: Withdraw = new Withdraw();
   public image = 'https://dummyimage.com/100x100/ccc/000';
-  constructor(private route: Router, private customerService: CustomerService, private fireStorage: AngularFireStorage, private toastr: ToastrService) { }
+  constructor(private accountService: AccountService, private route: Router, private customerService: CustomerService, private fireStorage: AngularFireStorage, private toastr: ToastrService) { }
   ngOnInit(): void {
     let getCustomerId = JSON.parse(localStorage.getItem('userDetail'));
     getCustomerId.forEach(res => {
       this.id = res._id;
     })
+    this.getAllDeposit();
+    this.getCustomerId();
+  }
+  getCustomerId() {
     if (this.id.length > 0) {
       this.customerService.getCustomerById(this.id).subscribe((res: any) => {
+        this.userImage = res?.result[0].userImage;
         this.bankDetail = res?.result[0]
         this.bankDetail?.bank.forEach(r => {
           this.bankId = r.bankId;
@@ -40,18 +48,27 @@ export class DepositComponent implements OnInit {
         console.log(error);
       })
     }
-    this.getAllDeposit();
   }
 
   async upload(event) {
     const file = event.target.files[0];
     if (file) {
       const path = `users/${file.name}`
-      const uploadImage = await this.fireStorage.upload(path, file)
-      const res = await uploadImage.ref.getDownloadURL()
+      this.uploadImage = await this.fireStorage.upload(path, file);
+      const res = await this.uploadImage.ref.getDownloadURL()
       this.avatarImg = res;
+      let image = {
+        "id": this.id,
+        "image": this.avatarImg
+      }
+      this.customerService.uploadImage(image).pipe(take(1)).subscribe((res: any) => {
+        this.getCustomerId();
+      }, (error) => {
+        console.log(error);
+      })
     }
   }
+
   removeImg() {
     this.avatarImage = 'https://dummyimage.com/100x100/ccc/000';
   }
@@ -74,6 +91,7 @@ export class DepositComponent implements OnInit {
   getAllDeposit() {
     this.customerService.getAllDeposit().subscribe((res: any) => {
       this.listDeposit = res;
+
       this.listDeposit.forEach(r => {
         let newDate = new Date(r.date);
         let date = { day: newDate.getDate(), month: newDate.getMonth(), year: newDate.getFullYear(), hour: newDate.getHours(), minute: newDate.getMinutes(), seconds: newDate.getSeconds() }
