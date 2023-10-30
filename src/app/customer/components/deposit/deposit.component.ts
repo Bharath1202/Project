@@ -80,7 +80,6 @@ export class DepositComponent implements OnInit {
       depositAmount: this.customer.depositamount,
     }
     this.customerService.depositAmount(details).pipe(take(1)).subscribe((res: any) => {
-      console.log(res);
       this.toastr.success('Deposit Successfully', '', { progressBar: true });
       this.customer = new Deposit();
       this.getAllDeposit();
@@ -105,8 +104,14 @@ export class DepositComponent implements OnInit {
     let details = {
       customerId: this.id,
       bankId: this.bankId,
-      depositAmount: this.withdraw.withdrawtamount,
+      withdrawAmount: Number(this.withdraw.withdrawAmount),
     }
-
+    this.customerService.withdrawAmount(details).pipe(take(1)).subscribe((res: any) => {
+      this.toastr.success('Withdraw Successfully', '', { progressBar: true });
+      this.withdraw = new Withdraw();
+      this.getAllDeposit();
+    }, (error) => {
+      console.log(error);
+    })
   }
 }

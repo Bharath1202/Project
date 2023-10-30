@@ -127,7 +127,7 @@
                                         <div class="d-flex">
                                             <div class="col-md-4" style="padding: 0 0 0 0rem;margin: 0 1rem 0 0">
                                                 <input type="text" appNumberValidation
-                                                    [(ngModel)]="customer.withdrawtamount" name="withdrawtamount"
+                                                    [(ngModel)]="withdraw.withdrawAmount" name="withdrawAmount"
                                                     placeholder="Enter your amount" class="forms-control amount" />
                                             </div>
                                             <div class="depositBtn">
@@ -136,27 +136,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="col-12 mt-4">
-                                        <div class="table-responsive border rounded mt-1">
-                                            <table class="table table-striped table-borderless">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th>Amount</th>
-                                                        <th>Date</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <!-- <tr *ngFor="let item of listDeposit let i = index">
-                                                        <td>{{item.amount}}</td>
-                                                        <td>{{item.date.year + '-' + item.date.month + '-' +
-                                                            item.date.day + ' ' +
-                                                            item.date.hour + ':' + item.date.minute + ':' +
-                                                            item.date.seconds}}</td>
-                                                    </tr> -->
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
                                 </ng-template>
                             </li>
                         </ul>

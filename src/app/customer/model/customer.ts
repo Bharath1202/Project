@@ -7,7 +7,7 @@ export class Deposit {
 export class Withdraw {
     bankId?: any;
     customerId?: any;
-    withdrawtamount?: number;
+    withdrawAmount?: number;
     date: Date;
 }
 
