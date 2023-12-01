@@ -3,10 +3,10 @@ import { CustomerService } from '../../service/customer.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Deposit, Withdraw } from '../../model/customer';
 import { ToastrService } from 'ngx-toastr';
-import { log } from 'console';
 import { Router } from '@angular/router';
 import { map, take, tap } from 'rxjs';
 import { AccountService } from 'src/app/view/service/account.service';
+import { isWeakMap } from 'util/types';
 
 @Component({
   selector: 'app-deposit',
@@ -31,12 +31,14 @@ export class DepositComponent implements OnInit {
     let getCustomerId = JSON.parse(localStorage.getItem('userDetail'));
     getCustomerId.forEach(res => {
       this.id = res._id;
+      if (this.id.length > 0) {
+        this.getCustomerId();
+      }
     })
-    this.getAllDeposit();
-    this.getCustomerId();
   }
   getCustomerId() {
-    if (this.id.length > 0) {
+    // if (this.id.length > 0) {
+      // this.getAllDeposit();
       this.customerService.getCustomerById(this.id).subscribe((res: any) => {
         this.userImage = res?.result[0].userImage;
         this.bankDetail = res?.result[0]
@@ -47,19 +49,23 @@ export class DepositComponent implements OnInit {
       }, (error) => {
         console.log(error);
       })
-    }
+    // }
   }
 
   async upload(event) {
     const file = event.target.files[0];
+    console.log('in');
+
     if (file) {
+      console.log('in');
+      
       const path = `users/${file.name}`
       this.uploadImage = await this.fireStorage.upload(path, file);
       const res = await this.uploadImage.ref.getDownloadURL()
-      this.avatarImg = res;
+      this.userImage = res;
       let image = {
         "id": this.id,
-        "image": this.avatarImg
+        "image": this.userImage
       }
       this.customerService.uploadImage(image).pipe(take(1)).subscribe((res: any) => {
         this.getCustomerId();
@@ -68,9 +74,21 @@ export class DepositComponent implements OnInit {
       })
     }
   }
+  delete(image){
+    const del = this.fireStorage.refFromURL(image);
+    console.log(del);
+    
+  }
 
-  removeImg() {
-    this.avatarImage = 'https://dummyimage.com/100x100/ccc/000';
+  removeImg(image) {
+    // this.userImage = undefined;
+    // this.avatarImage = 'https://dummyimage.com/100x100/ccc/000';
+  console.log(image);
+  
+    const del = this.fireStorage.refFromURL(image);
+    console.log(del);
+    del.delete();
+    
   }
   public d;
   deposit() {
